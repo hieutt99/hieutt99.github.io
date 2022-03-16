@@ -1,6 +1,6 @@
 ---
 title:  "Dynamic Programming"
-categories: Computer Science
+categories: "Computer Science"
 toc: true
 tags:
     - Algorithms
