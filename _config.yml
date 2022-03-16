@@ -7,8 +7,7 @@ author:
 
 # description: >- # this means to ignore newlines until "baseurl:"
 description: >+ # this means to ignore newlines until "show_excerpts:"
-    “There are no facts, only interpretations.”   
-    
+    “There are no facts, only interpretations.”      
     ~ Friedrich Nietzsche ~
 
 search: true
