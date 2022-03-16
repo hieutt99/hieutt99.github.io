@@ -14,14 +14,14 @@ Dynamic Programming hay quy hoạch động hay DP là phương pháp nhằm gi�
 Ý tưởng của memoization là lưu lại các kết quả tính toán từ các function calls và trả cached results để tối ưu việc tính toán khi gặp các kết quả với inputs tương tự. 
 Để dễ hiểu hơn, chúng ta có thể xét bài toán Fibonacci. Dãy Fibonacci là dãy vô hạn các số tự nhiên được bắt đầu với hai phần tử 0 và 1, các phần tử sau đó được thiết lập theo quy tắc phần tử sau bằng tổng hai phần tử đứng trước nó. Ta có công thức truy hồi của dãy Fibonacci như sau: 
 
-$$
+$
 F(n):=
 	\begin{cases}
 		1 & \text{khi n=1;}\\
 		1& \text{khi n=2;}\\
 		F(n-1)+F(n-2)& \text{khi n>2.}
 	\end{cases}
-$$
+$
 
 
 Problem có thể được giải quyết bằng cách giải cổ điển đó là sử dụng recursive algorithm. Tuy nhiên đặc điểm thường thấy của giải thuật đệ quy đó là khối lượng tính toán lớn và việc lặp tính toán các giá trị là nhiều. Do đó hiển nhiên là chúng ta có nhu cầu cải tiến thuật toán để khắc phục yếu tố computational cost. Và hướng tiếp cận có thể thấy là việc lặp các giá trị đầu vào mỗi khi gọi các hàm đệ quy. Trước hết chúng ta xét code đệ quy cho bài toán tìm dãy Fibonacci:
