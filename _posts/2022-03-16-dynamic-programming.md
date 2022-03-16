@@ -54,7 +54,7 @@ print(fib(50))
 
 hay là code bằng ngôn ngữ C++:
 
-```Cpp
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -100,7 +100,7 @@ print(fib(50))
 
 với ngôn ngữ C++:
 
-```Cpp
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -132,7 +132,7 @@ note : các trường hợp n chẵn ko thể tạo được cây nhị phân ho
 các trường hợp n lẻ thì tại state n là chỉnh hợp của 2 state trước đó có tổng số node cộng 1 bằng với số node của state n
 
 
-```Cpp
+```cpp
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -176,7 +176,7 @@ https://leetcode.com/problems/count-substrings-that-differ-by-one-character/
 note: cần đếm số substring tại state (i, j). sau đó thì nếu nhận thấy trường hợp kí tự khác nhau thì tổng số substring từ (i-1, j-1) cộng 1 ra số string diff 1 character thỏa mãn . nếu nó giống nhau thì số string diff 1 character kế thừa từ state (i-1, j-1) hay nói chính xác hơn là nó vẫn giống và trước đấy có substring thì nó tiếp tục giống với số lượng substring thỏa mãn ko đổi, còn nếu nó ko có thì nó là 0 (không đổi).
 
 
-```Cpp
+```cpp
 class Solution {
 public:
     int countSubstrings(string s, string t) {
