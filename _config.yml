@@ -19,11 +19,11 @@ markdown: kramdown
 theme: minima
 
 
-# Outputting
-permalink: /:year/:month/:day/:title/
-paginate: 10 # amount of posts to show
-paginate_path: /page:num/
-timezone: Asia/Ho_Chi_Minh
+# # Outputting
+# permalink: /:year/:month/:day/:title/
+# paginate: 10 # amount of posts to show
+# paginate_path: /page:num/
+# timezone: Asia/Ho_Chi_Minh
 
 
 show_excerpts: false # set to true to show excerpts on the homepage
