@@ -1,3 +1,13 @@
+---
+title:  "Dynamic Programming"
+categories: Computer Science
+toc: true
+tags:
+    - Algorithms
+---
+
+
+
 Dynamic Programming hay quy hoạch động hay DP là phương pháp nhằm giảm thời gian chạy trong các bài toán có tính chất ***overlapping subproblem*** và ***optimal substructure***. DP được chia làm 2 hướng tiếp cận chính là memoization hay top-down và tabulation hay bottom-up. 
 
 # Memoization 
