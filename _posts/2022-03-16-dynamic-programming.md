@@ -3,7 +3,7 @@ title:  "Dynamic Programming"
 categories: "Computer Science"
 toc: true
 tags:
-    - Algorithms
+	- Algorithms
 ---
 
 
@@ -106,10 +106,10 @@ using namespace std;
 
 long long int fib(int n){
 	vector<long long int> table = {0,1};
-    for (int i = 2; i<=n;i++){
-        table.push_back(table[i-1] + table[i-2]); 
-    }
-    return table[n];
+	for (int i = 2; i<=n;i++){
+		table.push_back(table[i-1] + table[i-2]); 
+	}
+	return table[n];
 }
 
 int main(){
@@ -146,27 +146,27 @@ các trường hợp n lẻ thì tại state n là chỉnh hợp của 2 state t
  */
 class Solution {
 public:
-    vector<TreeNode*> allPossibleFBT(int n) {
-        vector<vector<TreeNode*>> dp(n+1);
-        if (n % 2 == 0)  return vector<TreeNode*>();
+	vector<TreeNode*> allPossibleFBT(int n) {
+		vector<vector<TreeNode*>> dp(n+1);
+		if (n % 2 == 0)  return vector<TreeNode*>();
 
-        dp[1].push_back(new TreeNode(0));
-        for (int i = 3; i<=n;i+=2){
-        	for(int j = 1; j<i;j+=2){
-        		for (int k = 0; k<dp[j].size(); k++){
-        			for (int l = 0; l<dp[i-j-1].size(); l++){
-        				TreeNode* root = new TreeNode(0);
-        				root->left = dp[j][k];
-        				root->right = dp[i-j-1][l];
-        				dp[i].push_back(root);
-        			}
-        		}
-        	}
-        }
+		dp[1].push_back(new TreeNode(0));
+		for (int i = 3; i<=n;i+=2){
+			for(int j = 1; j<i;j+=2){
+				for (int k = 0; k<dp[j].size(); k++){
+					for (int l = 0; l<dp[i-j-1].size(); l++){
+						TreeNode* root = new TreeNode(0);
+						root->left = dp[j][k];
+						root->right = dp[i-j-1][l];
+						dp[i].push_back(root);
+					}
+				}
+			}
+		}
 
 
-        return dp[n];
-    }
+		return dp[n];
+	}
 };
 ```
 
@@ -179,29 +179,29 @@ note: cần đếm số substring tại state (i, j). sau đó thì nếu nhận
 ```cpp
 class Solution {
 public:
-    int countSubstrings(string s, string t) {
-    	int m = s.length();
-    	int n = t.length();
-        vector<vector<int>> count_subs(m+1, vector<int>(n+1, 0));
-        vector<vector<int>> count_diffs(m+1, vector<int>(n+1, 0));
+	int countSubstrings(string s, string t) {
+		int m = s.length();
+		int n = t.length();
+		vector<vector<int>> count_subs(m+1, vector<int>(n+1, 0));
+		vector<vector<int>> count_diffs(m+1, vector<int>(n+1, 0));
 
-        int cnt = 0;
-        for (int i=1;i<=m;i++){
-        	for (int j=1;j<=n;j++){
-        		if (s[i-1] == t[j-1]){
-        			count_subs[i][j] = count_subs[i-1][j-1] + 1;
-        			count_diffs[i][j] = count_diffs[i-1][j-1];
-        			cnt += count_diffs[i][j];
-        		}
-        		else{
-        			count_subs[i][j] = 0;
-        			count_diffs[i][j] = count_subs[i-1][j-1]+1;
-        			cnt += count_diffs[i][j];
-        		}
-        	}
-        }
-        return cnt;
-    }
+		int cnt = 0;
+		for (int i=1;i<=m;i++){
+			for (int j=1;j<=n;j++){
+				if (s[i-1] == t[j-1]){
+					count_subs[i][j] = count_subs[i-1][j-1] + 1;
+					count_diffs[i][j] = count_diffs[i-1][j-1];
+					cnt += count_diffs[i][j];
+				}
+				else{
+					count_subs[i][j] = 0;
+					count_diffs[i][j] = count_subs[i-1][j-1]+1;
+					cnt += count_diffs[i][j];
+				}
+			}
+		}
+		return cnt;
+	}
 };
 ```
 
@@ -214,27 +214,27 @@ note: lưu ý bài này chỉ cần đếm, nếu như form tất cả các trư
 ```cpp
 class Solution {
 public:
-    int countVowelStrings(int n) {
-        vector<vector<int>> dp(n+1);
-        dp[1] = {1, 1, 1, 1, 1};
+	int countVowelStrings(int n) {
+		vector<vector<int>> dp(n+1);
+		dp[1] = {1, 1, 1, 1, 1};
 
-        int cnt = 0;
-        for(int i = 2;i<=n;i++){
-    		for (int j = 0; j<5; j++){
-    			cnt = 0;
-    			for (int k = j; k<5;k++){
-    				cnt += dp[i-1][k];
-    			}
-    			dp[i].push_back(cnt);
-    		}
-        }
+		int cnt = 0;
+		for(int i = 2;i<=n;i++){
+			for (int j = 0; j<5; j++){
+				cnt = 0;
+				for (int k = j; k<5;k++){
+					cnt += dp[i-1][k];
+				}
+				dp[i].push_back(cnt);
+			}
+		}
 
-        int total = 0;
-        for (int i = 0; i < 5; i++){
-        	total += dp[n][i];
-        }
-        return total;
-    }
+		int total = 0;
+		for (int i = 0; i < 5; i++){
+			total += dp[n][i];
+		}
+		return total;
+	}
 };
 ```
 
@@ -246,30 +246,30 @@ note: chưa phải cách nhanh nhất
 ```cpp
 class Solution {
 public:
-    int countSquares(vector<vector<int>>& matrix) {
-        int m = matrix.size();
-        int n = matrix[0].size();
-        int max_side = min(n, m);
-        vector<vector<int>> dp(m, vector<int>(n, 0));
+	int countSquares(vector<vector<int>>& matrix) {
+		int m = matrix.size();
+		int n = matrix[0].size();
+		int max_side = min(n, m);
+		vector<vector<int>> dp(m, vector<int>(n, 0));
 
-        int cnt = 0;
-        for (int i = 0; i<max_side; i++){
-        	for (int j = i; j<m;j++){
-        		for(int k = i; k<n;k++){
-        			if (i>0){
-        				dp[j][k] = matrix[j-1][k-1] && matrix[j-1][k] && matrix[j][k-1] && matrix[j][k];
-        				cnt += dp[j][k];
-        			}
-        			else{
-        				cnt += matrix[j][k];
-        				dp[j][k] = matrix[j][k];
-        			}
-        		}
-        	}
-        	matrix = dp;
-        }
-        return cnt;
-    }
+		int cnt = 0;
+		for (int i = 0; i<max_side; i++){
+			for (int j = i; j<m;j++){
+				for(int k = i; k<n;k++){
+					if (i>0){
+						dp[j][k] = matrix[j-1][k-1] && matrix[j-1][k] && matrix[j][k-1] && matrix[j][k];
+						cnt += dp[j][k];
+					}
+					else{
+						cnt += matrix[j][k];
+						dp[j][k] = matrix[j][k];
+					}
+				}
+			}
+			matrix = dp;
+		}
+		return cnt;
+	}
 };
 ```
 
@@ -281,56 +281,56 @@ note: không chắc là có tối ưu được không nữa
 ```cpp
 class Solution {
 public:
-    int numSplits(string s) {
-        vector<char> left;
-        vector<int> left_count;
-        vector<char> right;
-        vector<int> right_count;
-        
-        int check; 
-        for (int i = 0; i<s.length(); i++){
-        	check = 0;
-        	for(int j = 0; j<right.size(); j++){
-        		if (right[j] == s[i]){
-        			right_count[j]+=1;
-        			check = 1;
-        			break;
-        		}
-        	}
-        	if (!check) {
-        		right.push_back(s[i]);
-        		right_count.push_back(1);
-        	}
-        }
+	int numSplits(string s) {
+		vector<char> left;
+		vector<int> left_count;
+		vector<char> right;
+		vector<int> right_count;
+		
+		int check; 
+		for (int i = 0; i<s.length(); i++){
+			check = 0;
+			for(int j = 0; j<right.size(); j++){
+				if (right[j] == s[i]){
+					right_count[j]+=1;
+					check = 1;
+					break;
+				}
+			}
+			if (!check) {
+				right.push_back(s[i]);
+				right_count.push_back(1);
+			}
+		}
 
-        int cnt = 0;
-        for (int i = 0; i<s.length()-1; i++){
-        	check = 0;
-        	for(int j = 0; j<left.size();j++){
-        		if (left[j] == s[i]){
-        			left_count[j]+=1;
-        			check = 1;
-        			break;
-        		}
-        	}
-        	if (!check){
-        		left.push_back(s[i]);
-        		left_count.push_back(1);
-        	}
-        	
-        	for(int j = 0; j< right.size();j++){
-        		if (right[j] == s[i]){
-        			right_count[j] -=1;
-        			if (right_count[j] == 0){
-        				right_count.erase(right_count.begin()+j);
-        				right.erase(right.begin()+j);
-        			}
-        		}
-        	}
-        	if (right.size() == left.size()) cnt+=1;
-        }
-        return cnt;
-    }
+		int cnt = 0;
+		for (int i = 0; i<s.length()-1; i++){
+			check = 0;
+			for(int j = 0; j<left.size();j++){
+				if (left[j] == s[i]){
+					left_count[j]+=1;
+					check = 1;
+					break;
+				}
+			}
+			if (!check){
+				left.push_back(s[i]);
+				left_count.push_back(1);
+			}
+			
+			for(int j = 0; j< right.size();j++){
+				if (right[j] == s[i]){
+					right_count[j] -=1;
+					if (right_count[j] == 0){
+						right_count.erase(right_count.begin()+j);
+						right.erase(right.begin()+j);
+					}
+				}
+			}
+			if (right.size() == left.size()) cnt+=1;
+		}
+		return cnt;
+	}
 };
 
 ```
