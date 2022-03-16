@@ -7,6 +7,26 @@ description: > # this means to ignore newlines until "show_excerpts:"
     line in _config.yml. It will appear in your document head meta (for
     Google search results) and in your feed.xml site description.
 
+
+minimal_mistakes_skin: dark
+search: true
+
+
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 10 # amount of posts to show
+paginate_path: /page:num/
+timezone: Asia/Ho_Chi_Minh
+
+include:
+    - _pages
+
+
 show_excerpts: false # set to true to show excerpts on the homepage
 
 # Minima date format
@@ -56,5 +76,10 @@ minima:
 theme: minima
 
 plugins:
- - jekyll-feed
- - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
+  - jekyll-remote-theme
