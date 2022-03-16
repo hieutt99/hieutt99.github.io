@@ -111,4 +111,4 @@ int main(){
 
 # So sánh giữa Memoization và Tabulation
 
-![/assets/images/Tabulation-vs-Memoization-1.png]
+![/assets/images/Tabulation-vs-Memoization-1.png](/assets/images/Tabulation-vs-Memoization-1.png)
