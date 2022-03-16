@@ -127,7 +127,7 @@ int main(){
 
 ## LeetCode
 ### Full Binary Trees
-https://leetcode.com/problems/all-possible-full-binary-trees/
+[Problem](https://leetcode.com/problems/all-possible-full-binary-trees/)
 note : các trường hợp n chẵn ko thể tạo được cây nhị phân hoàn chỉnh 
 các trường hợp n lẻ thì tại state n là chỉnh hợp của 2 state trước đó có tổng số node cộng 1 bằng với số node của state n
 
@@ -171,7 +171,7 @@ public:
 ```
 
 ### Substrings that differ by one character
-https://leetcode.com/problems/count-substrings-that-differ-by-one-character/
+[Problem](https://leetcode.com/problems/count-substrings-that-differ-by-one-character/)
 
 note: cần đếm số substring tại state (i, j). sau đó thì nếu nhận thấy trường hợp kí tự khác nhau thì tổng số substring từ (i-1, j-1) cộng 1 ra số string diff 1 character thỏa mãn . nếu nó giống nhau thì số string diff 1 character kế thừa từ state (i-1, j-1) hay nói chính xác hơn là nó vẫn giống và trước đấy có substring thì nó tiếp tục giống với số lượng substring thỏa mãn ko đổi, còn nếu nó ko có thì nó là 0 (không đổi).
 
@@ -206,7 +206,7 @@ public:
 ```
 
 ### Count sorted vowel strings 
-https://leetcode.com/problems/count-sorted-vowel-strings/
+[Problem](https://leetcode.com/problems/count-sorted-vowel-strings/)
 
 note: lưu ý bài này chỉ cần đếm, nếu như form tất cả các trường hợp của string thì sẽ gây TLE. ngược lại chỉ đếm và cộng thì kết quả sẽ rất nhanh . đây có lẽ là cách làm nhanh nhất trong cái submission rồi. 
 
@@ -239,7 +239,7 @@ public:
 ```
 
 ###  Count square submatrices with all ones
-https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+[Problem](https://leetcode.com/problems/count-square-submatrices-with-all-ones/)
 
 note: chưa phải cách nhanh nhất 
 
@@ -275,7 +275,7 @@ public:
 
 
 ### Number of good ways to split a string
-https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
+[Problem](https://leetcode.com/problems/number-of-good-ways-to-split-a-string/)
 note: không chắc là có tối ưu được không nữa 
 
 ```cpp
