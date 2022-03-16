@@ -25,9 +25,6 @@ paginate: 10 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Ho_Chi_Minh
 
-include:
-    - _pages
-
 
 show_excerpts: false # set to true to show excerpts on the homepage
 
