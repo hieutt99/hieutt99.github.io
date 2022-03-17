@@ -10,6 +10,8 @@ tags:
 
 Dynamic Programming hay quy hoạch động hay DP là phương pháp nhằm giảm thời gian chạy trong các bài toán có tính chất ***overlapping subproblem*** và ***optimal substructure***. DP được chia làm 2 hướng tiếp cận chính là memoization hay top-down và tabulation hay bottom-up. 
 
+Bài blog này được viết với hy vọng ease the pain của việc học thuật toán Dynamic Programming. Lưu ý rằng trình độ của người viết cũng có hạn và cũng không có nhằm đến mục tiêu gì cao siêu ngoài việc viết 1 bài post với kỳ vọng giúp cho việc tiếp cận DP (ở mức cơ bản) dễ hơn và ghi lại những gì chính mình đã học. Bài viết sử dụng 2 ngôn ngữ là Python và C++. Lý do cho việc sử dụng C++ thì là vì nhiều người sử dụng nó trong competitive programming, chứ nói thật tôi cũng không thạo C++. Tuy nhiên thì theo tôn chỉ của ĐHBK thì làm việc khó thì các bạn mới học được nhìu so ... 
+
 # Memoization 
 Ý tưởng của memoization là lưu lại các kết quả tính toán từ các function calls và trả cached results để tối ưu việc tính toán khi gặp các kết quả với inputs tương tự. 
 Để dễ hiểu hơn, chúng ta có thể xét bài toán Fibonacci. Dãy Fibonacci là dãy vô hạn các số tự nhiên được bắt đầu với hai phần tử 0 và 1, các phần tử sau đó được thiết lập theo quy tắc phần tử sau bằng tổng hai phần tử đứng trước nó. Ta có công thức truy hồi của dãy Fibonacci như sau: 
@@ -126,11 +128,18 @@ int main(){
 # Một số ví dụ với Dynamic Programming 
 
 ## LeetCode
+
+Các problem được lấy từ medium problems được gắn tag dynamic programming với định hướng rằng các problem này là vừa đủ (không quá khó hay quá dễ) để làm quen với việc nhìn các pattern của DP. 
+
 ### Full Binary Trees
 <a href="https://leetcode.com/problems/all-possible-full-binary-trees/" target="_blank">Problem</a>
-note : các trường hợp n chẵn ko thể tạo được cây nhị phân hoàn chỉnh 
-các trường hợp n lẻ thì tại state n là chỉnh hợp của 2 state trước đó có tổng số node cộng 1 bằng với số node của state n
 
+Quan sát:
+- Full Binary Tree hay FBT thì số nốt chẵn sẽ không tạo được bất kì cây nào hợp lệ nên là nếu đầu vào chẵn là loại luôn 
+- trừ base case $n=1$ ra thì xét các trường hợp lẻ lớn hơn 1, nhánh trái và phải của nó cũng phải là FBT thì cây đó mới hợp lệ. Từ đây ta thấy có mùi của DP rồi. 
+- Xét các chỉnh hợp thì có thể thấy rằng ví dụ $n = 7 = 1 + 1 + 5 = 1 + 3 + 3 = 1 + 5 + 1$, hay giải thích dễ hiểu hơn thì ta đang xét hoán vị các cây con có cùng số node mà tổng số node + 1 thì bằng state đang xét. 
+
+Từ quan sát thì ta đưa ra thuật toán: tại state $i$ thì các cây của $i$ được form bằng chỉnh hợp của các state trước đó với tổng số node cộng $1$ bằng state $i$. Điều này có thể thực hiện iter $j$ từ $1$ đến state trước $i$ và bên còn lại là $i-j-1$
 
 ```cpp
 /**
@@ -172,6 +181,9 @@ public:
 
 ### Substrings that differ by one character
 <a href="https://leetcode.com/problems/count-substrings-that-differ-by-one-character/" target="_blank">Problem</a>
+
+Quan sát: gần giống bài toán substring nhưng thêm điều kiện là khác nhau 1 character. Như vậy thì khả năng là ta cần chia nhỏ ra xét substring trước và xét điều kiện khác 1 character sau. 
+
 note: cần đếm số substring tại state (i, j). sau đó thì nếu nhận thấy trường hợp kí tự khác nhau thì tổng số substring từ (i-1, j-1) cộng 1 ra số string diff 1 character thỏa mãn . nếu nó giống nhau thì số string diff 1 character kế thừa từ state (i-1, j-1) hay nói chính xác hơn là nó vẫn giống và trước đấy có substring thì nó tiếp tục giống với số lượng substring thỏa mãn ko đổi, còn nếu nó ko có thì nó là 0 (không đổi).
 
 
@@ -206,6 +218,9 @@ public:
 
 ### Count sorted vowel strings 
 <a href="https://leetcode.com/problems/count-sorted-vowel-strings/" target="_blank">Problem</a>
+
+Quan sát: ta có 5 vowels và có thể thấy là mỗi state tương ứng với độ dài của các string thì chỉ là ta thêm 1 trong 5 vowels vào các string đã có của state trước với điều kiện là string đó hợp lệ. Vậy thì tổng số có thể tạo được là tổng số string ở state cuối có thể tạo được của 5 vowels. Tuy nhiên có 1 lưu ý là vowels cần được xếp theo thứ tự và sẽ không thể thêm vowel có thứ tự sau vào string đang có kí tự đầu là vowel đứng trước. Do đó đối với mỗi state, số lượng string được tạo cho mỗi vowels là tổng của state trước nhưng chỉ tính từ vowel tương ứng đến cuối. 
+
 note: lưu ý bài này chỉ cần đếm, nếu như form tất cả các trường hợp của string thì sẽ gây TLE. ngược lại chỉ đếm và cộng thì kết quả sẽ rất nhanh . đây có lẽ là cách làm nhanh nhất trong cái submission rồi. 
 
 
@@ -239,7 +254,12 @@ public:
 ###  Count square submatrices with all ones
 
 <a href="https://leetcode.com/problems/count-square-submatrices-with-all-ones/" target="_blank">Problem</a>
-note: chưa phải cách nhanh nhất 
+
+Quan sát: để nó là 1 hình vuông có cạnh là i thì trước hết nó phải chứa đâu đó 1 hình vuông có cạnh là i-1 đã, với điều kiện là i lớn hơn 1. 
+
+Thuật toán: đầu tiên phải xác định là base case là cạnh 1. Ta tạo ra mảng quy hoạch $dp$ chứa giá trị vào góc phải dưới của hình vuông là boolean liệu ô đó có phải là hình vuông hay ko. Xác định điều đó tất nhiên là phải duyệt qua cả 4 góc. Tuy nhiên nhìn bài toán theo hướng đệ quy thì chúng ta đang thu hẹp bài toán dưới mô hình là các hình vuông sẽ chỉ có 4 điểm 0/1 được kế thừa sau mỗi state và ma trận quy hoạch sẽ thu hẹp lại dần vào hướng phải dưới.  
+
+note: đây là cách làm cá nhân và nó chắc chưa phải cách nhanh nhất 
 
 ```cpp
 class Solution {
@@ -275,7 +295,8 @@ public:
 ### Number of good ways to split a string
 
 <a href="https://leetcode.com/problems/number-of-good-ways-to-split-a-string/" target="_blank">Problem</a>
-note: không chắc là có tối ưu được không nữa 
+
+note: để tối ưu cần sử dụng hash table.
 
 ```cpp
 class Solution {
